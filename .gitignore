@@ -1,0 +1,8 @@
+web-campus/node_modules/
+web-campus/dist/
+web-campus/tsconfig.tsbuildinfo
+.sentinel-campus-events.json
+.sentinel-campus-events.json.tmp
+.sentinel-campus-registry.json
+.DS_Store
+*.log

@@ -1,0 +1,39 @@
+# Line endings, for the Windows path (docs/GPU-RUNBOOK.md §0-W).
+#
+# Git for Windows ships with core.autocrlf=true, so a clone made there rewrites
+# every checked-out text file to CRLF. Everything in this repository is then run
+# under Linux — in WSL, or in a container — and a shell script with CRLF endings
+# fails as `bash: \r: command not found`, which names neither the file nor the
+# real cause. The same carriage returns land inside SQL migrations, Dockerfiles
+# and config.pbtxt, where they fail more quietly still.
+#
+# `text=auto eol=lf` normalises to LF in the repository AND in the working tree
+# on every platform, whatever the local autocrlf setting says. Binary files are
+# detected and left alone.
+* text=auto eol=lf
+
+# Belt and braces for the files where a stray \r is fatal rather than untidy.
+*.sh      text eol=lf
+*.pbtxt   text eol=lf
+*.sql     text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+Makefile  text eol=lf
+Dockerfile text eol=lf
+
+# The one exception to eol=lf, and it is not cosmetic. cmd.exe reads a batch
+# file as it executes it, seeking by byte offset — with LF-only endings a
+# `goto`, an `if (...)` block or a label can land mid-line and the script runs
+# the wrong branch or dies with a syntax error naming a line that is fine.
+# up.bat is the Windows entry point, so it is the one file that MUST be CRLF.
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+
+# Never touched: rewriting a byte here corrupts the artifact.
+*.bin     binary
+*.onnx    binary
+*.mp4     binary
+*.png     binary
+*.jpg     binary
+*.pdf     binary
+*.docx    binary

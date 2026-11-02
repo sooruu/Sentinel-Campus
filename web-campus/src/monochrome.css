@@ -1,0 +1,58 @@
+:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-raised:#fafafa;
+  --surface-muted:#f1f1f1;
+  --line:#d8d8d8;
+  --line-strong:#999999;
+  --text:#080808;
+  --muted:#555555;
+  --faint:#858585;
+  --ink:#ffffff;
+  --accent:#080808;
+  --accent-contrast:#ffffff;
+  --good:#333333;
+  --warn:#555555;
+  --danger:#111111;
+  --shadow:0 10px 26px rgba(0,0,0,.045);
+}
+:root[data-theme=dark]{
+  --bg:#000000;
+  --surface:#0b0b0b;
+  --surface-raised:#111111;
+  --surface-muted:#1a1a1a;
+  --line:#292929;
+  --line-strong:#5c5c5c;
+  --text:#ffffff;
+  --muted:#b5b5b5;
+  --faint:#777777;
+  --ink:#000000;
+  --accent:#ffffff;
+  --accent-contrast:#000000;
+  --good:#d1d1d1;
+  --warn:#b5b5b5;
+  --danger:#ffffff;
+  --shadow:0 16px 36px rgba(0,0,0,.35);
+}
+.side-status,.sync,.heading-status,.gate-state strong,.auto .mode-badge,.decision.open,.pulse,.vehicle-status.active,.movement-direction.entry,.status-pill,.health-icon.good{color:var(--text)!important}
+.manual .mode-badge,.decision.deny_alert,.vehicle-status.blocked,.vehicle-status.suspended,.movement-direction.exit,.health-icon,.danger-text,.alert-severity{color:var(--text)!important}
+.dashboard-heading h1{display:none}
+.dashboard-heading{min-height:104px;align-items:center}
+.brand-mark{display:grid!important;place-items:center;width:31px;height:31px;margin:0!important;color:var(--text)!important;font-size:17px!important;font-weight:700;line-height:1;letter-spacing:-.08em!important}
+.status-dot{box-shadow:0 0 0 3px color-mix(in srgb,var(--text) 13%,transparent)}
+.player-badge.live{background:var(--text);color:var(--bg)}
+.app-shell{grid-template-columns:248px minmax(0,1fr)}
+.sidebar{position:sticky;top:0;height:100dvh;z-index:5;overflow-y:auto}
+.sidebar-head{display:flex;align-items:flex-start;gap:8px}
+.sidebar-head .brand{flex:1;min-width:0}
+.sidebar-toggle{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid var(--line);background:var(--surface);color:var(--muted);margin-top:2px}
+.sidebar-toggle:hover{background:var(--surface-muted);color:var(--text)}
+.sidebar-is-collapsed{grid-template-columns:76px minmax(0,1fr)}
+.sidebar-is-collapsed .sidebar{padding-left:12px;padding-right:12px}
+.sidebar-is-collapsed .sidebar-head{display:block}
+.sidebar-is-collapsed .brand{justify-content:center;padding:2px 0 42px}
+.sidebar-is-collapsed .brand>span:last-child,.sidebar-is-collapsed .workspace-label,.sidebar-is-collapsed .nav-item span,.sidebar-is-collapsed .side-status,.sidebar-is-collapsed .side-meta{display:none}
+.sidebar-is-collapsed .sidebar-toggle{margin:0 auto 18px}
+.sidebar-is-collapsed .nav-item{justify-content:center;padding:0;border-left:0}
+.sidebar-is-collapsed .nav-item.active{border-left:0;background:var(--surface-muted)}
+@media(max-width:720px){.sidebar,.sidebar-is-collapsed .sidebar{position:relative;height:61px;overflow:visible}.sidebar-is-collapsed{display:block}.sidebar-is-collapsed .sidebar-head{display:flex}.sidebar-is-collapsed .brand{justify-content:flex-start;padding:0}.sidebar-is-collapsed .brand>span:last-child{display:block}.sidebar-is-collapsed .sidebar-toggle{margin:2px 0 0}.sidebar-is-collapsed .sidebar{padding:0 16px}.sidebar-is-collapsed .brand-mark{display:grid!important}.sidebar-toggle{display:none}}
